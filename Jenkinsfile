@@ -7,14 +7,11 @@ pipeline{
     stages {
         
         stage('Git Checkout'){
-            
-            steps{
                 
-                script{
-                    gitCheckout{
-                        branch: "main"
-                        url: 'https://github.com/Tobirachel/demo-counter-app.git'
-                    }
+            steps{
+            gitCheckout{
+                branch: "main"
+                url: 'https://github.com/Tobirachel/demo-counter-app.git'
                     
                 }
             }
