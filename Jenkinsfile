@@ -1,4 +1,4 @@
-@Library("jenkins_shared_lib") _
+
 
 pipeline{
     
@@ -11,11 +11,8 @@ pipeline{
             steps{
                 
                 script{
+                    git branch: 'main', url: 'https://github.com/Tobirachel/demo-counter-app.git'
                     
-                    gitCheckout{
-                        branch: 'main'
-                        url: 'https://github.com/Tobirachel/demo-counter-app.git'
-                    }
                 }
             }
         }
