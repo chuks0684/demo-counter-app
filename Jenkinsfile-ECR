@@ -6,8 +6,8 @@ pipeline{
     parameters{
         choice(name: 'action', choices: 'create\ndelete', description: 'choose create/Destroy')
         string(name: 'aws_account_id', description: "name of the docker build" , defaultValue: '806126151129')
-        string(name: 'Region', description: "Region of ECR" , defaultValue: 'us-west-1')
-        string(name: 'ECR_REPO_NAME', description: "name of the ECR" , defaultValue: '1st-project')
+        string(name: 'region', description: "Region of ECR" , defaultValue: 'us-west-1')
+        string(name: 'ecr_repoName', description: "name of the ECR" , defaultValue: '1st-project')
     }
     
       stages {
@@ -85,7 +85,7 @@ pipeline{
                 
                    script{
                      
-                      dockerBuild("${params.aws_account_id}","${params.Region}","${params.ECR_REPO_NAME}")
+                      dockerBuild("${params.aws_account_id}","${params.region}","${params.ecr_repoName}")
                    }
                }
             }
@@ -95,7 +95,7 @@ pipeline{
                 
                    script{
                      
-                      dockerImageScan("${params.aws_account_id}","${params.Region}","${params.ECR_REPO_NAME}")
+                      dockerImageScan("${params.aws_account_id}","${params.region}","${params.ecr_repoName}")
                    }
                }
             }
@@ -105,7 +105,7 @@ pipeline{
                 
                    script{
                      
-                      dockerImagePush("${params.aws_account_id}","${params.Region}","${params.ECR_REPO_NAME}")
+                      dockerImagePush("${params.aws_account_id}","${params.region}","${params.ecr_repoName}")
                    }
                }
             }
