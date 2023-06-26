@@ -11,7 +11,7 @@ pipeline{
         string(name: 'AppName', description: "name of the Application" , defaultValue: 'springboot')
     }
     
-    stages {
+      stages {
        
         
         stage('Git Checkout'){
@@ -80,7 +80,7 @@ pipeline{
                     }
                 }
             }
-            stage('Maven build'){
+            stage('Docker build'){
             when {expression { params.action == 'create' } }    
                steps{
                 
