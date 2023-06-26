@@ -10,7 +10,10 @@ pipeline{
                 
                 script{
                     
-                    git branch: 'main', url: 'https://github.com/Tobirachel/demo-counter-app.git.git'
+                    gitCheckout{
+                        branch: 'main'
+                        url: 'https://github.com/Tobirachel/demo-counter-app.git'
+                    }
                 }
             }
         }
