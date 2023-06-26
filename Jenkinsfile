@@ -9,9 +9,10 @@ pipeline{
     }
     
     stages {
-        when {expression { param.action == 'create' } }
+       
         
         stage('Git Checkout'){
+        when {expression { params.action == 'create' } }
                 
             steps{
             gitCheckout(
@@ -23,7 +24,7 @@ pipeline{
             }
         }
         stage('UNIT testing'){
-        when {expression { param.action == 'create' } }
+        when {expression { params.action == 'create' } }
             
             steps{
                 
@@ -34,7 +35,7 @@ pipeline{
             }
         }
         stage('Integration testing'){
-        when {expression { param.action == 'create' } }    
+        when {expression { params.action == 'create' } }    
             steps{
                 
                 script{
@@ -44,7 +45,7 @@ pipeline{
             }
         }
         stage('Maven build'){
-        when {expression { param.action == 'create' } }    
+        when {expression { params.action == 'create' } }    
             steps{
                 
                 script{
@@ -53,16 +54,14 @@ pipeline{
                 }
             }
         }
-        stage('Static code analysis'){
+        stage('Static code analysis: Sonarqube'){
+        when {expression { params.action == 'create' } }
             
             steps{
                 
                 script{
                     
-                    withSonarQubeEnv(credentialsId: 'sonar-api') {
-                        
-                        sh 'mvn clean package sonar:sonar'
-                    }
+                   statiCodeAnalysis()
                    }
                     
                 }
