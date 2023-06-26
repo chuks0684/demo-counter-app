@@ -33,7 +33,7 @@ pipeline{
                 
                 script{
                     
-                    sh 'mvn verify -DskipUnitTests'
+                    mvnIntegrationTest()
                 }
             }
         }
@@ -43,7 +43,7 @@ pipeline{
                 
                 script{
                     
-                    sh 'mvn clean install'
+                    mvnBuild()
                 }
             }
         }
