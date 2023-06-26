@@ -11,8 +11,9 @@ pipeline{
             steps{
             gitCheckout(
                 branch: "main"
-                url: 'https://github.com/Tobirachel/demo-counter-app.git'
-                )
+                url: "https://github.com/Tobirachel/demo-counter-app.git"
+            )
+            
                     
             }
         }
