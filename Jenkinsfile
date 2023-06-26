@@ -90,6 +90,16 @@ pipeline{
                    }
                }
             }
+            stage('Docker ImageScan: trivy'){
+            when {expression { params.action == 'create' } }    
+               steps{
+                
+                   script{
+                     
+                      DockerImageScan("${params.ImageName}","${params.ImageTag}","${params.DockerHubUser}")
+                   }
+               }
+            }
         }
         
 }
