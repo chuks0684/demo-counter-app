@@ -14,7 +14,6 @@ pipeline{
                 url: 'https://github.com/Tobirachel/demo-counter-app.git'
                 )
                     
-                }
             }
         }
         stage('UNIT testing'){
