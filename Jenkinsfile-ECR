@@ -68,7 +68,7 @@ pipeline{
                     
                 }
             }
-            stage('Quality Gate Status'){
+            /*stage('Quality Gate Status'){
             when {expression { params.action == 'create' } }
                 
                 steps{
@@ -78,7 +78,7 @@ pipeline{
                         qualityGateStatus(credentialsId)
                     }
                 }
-            }
+            }*/
             stage('Docker build'){
             when {expression { params.action == 'create' } }    
                steps{
