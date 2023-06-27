@@ -105,7 +105,10 @@ pipeline{
                 
                    script{
                      
-                      dockerImagePush("${params.aws_account_id}","${params.Region}","${params.ECR_REPO_NAME}")
+                      sh """
+                         aws ecr get-login-password --region us-west-1 | docker login --username AWS --password-stdin 806126151129.dkr.ecr.us-west-1.amazonaws.com
+                         docker push 806126151129.dkr.ecr.us-west-1.amazonaws.com/1st-project:latest
+                       """
                    }
                }
             }
