@@ -99,13 +99,23 @@ pipeline{
                    }
                }
             }
-            stage('Docker ImagePush: DockerHub'){
+            stage('Docker ImagePush: ECR'){
             when {expression { params.action == 'create' } }    
                steps{
                 
                    script{
                      
                       dockerImagePush("${params.aws_account_id}","${params.Region}","${params.ECR_REPO_NAME}")
+                   }
+               }
+            }
+             stage('Docker ImageCleanup: ECR'){
+            when {expression { params.action == 'create' } }    
+               steps{
+                
+                   script{
+                     
+                      dockerImageCleanup("${params.aws_account_id}","${params.Region}","${params.ECR_REPO_NAME}")
                    }
                }
             }
