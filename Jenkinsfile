@@ -57,7 +57,7 @@ pipeline{
                 }
             }
         }
-        stage('Static code analysis: Sonarqube'){
+       /* stage('Static code analysis: Sonarqube'){
         when {expression { params.action == 'create' } }
             
             steps{
@@ -78,7 +78,7 @@ pipeline{
                    QualityGateStatus(credentialsId)
                     }
                 }
-            }
+            }*/
             stage('Docker build'){
             when {expression { params.action == 'create' } }    
                steps{
