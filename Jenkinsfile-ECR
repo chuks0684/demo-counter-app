@@ -106,8 +106,8 @@ pipeline{
                    script{
                      
                       sh """
-                         aws ecr get-login-password --region us-west-1 | docker login --username AWS --password-stdin 806126151129.dkr.ecr.us-west-1.amazonaws.com
-                         docker push 806126151129.dkr.ecr.us-west-1.amazonaws.com/1st-project:latest
+                          aws ecr get-login-password --region us-west-1 | docker login --username AWS --password-stdin 296784826342.dkr.ecr.us-west-1.amazonaws.com
+                           docker push 296784826342.dkr.ecr.us-west-1.amazonaws.com/sam:latest
                        """
                    }
                }
