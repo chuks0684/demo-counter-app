@@ -94,7 +94,7 @@ pipeline{
                steps{
                 
                    script{
-                     
+                       
                       dockerImageScan("${params.aws_account_id}","${params.Region}","${params.ECR_REPO_NAME}")
                    }
                }
@@ -103,7 +103,7 @@ pipeline{
          when { expression {  params.action == 'create' } }
               steps{
                  script{
-                   
+                   def credentialsId = 'AWS_SECRET_KEY_ID'
                   dockerImagePush("${params.aws_account_id}","${params.Region}","${params.ECR_REPO_NAME}")
                }
              }
